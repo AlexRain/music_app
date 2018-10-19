@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f417ee4-a53d-4563-b0af-16690a2a76a7" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/mainPage.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/personalInfo.dart" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/lib/login.dart" afterPath="$PROJECT_DIR$/lib/login.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" afterPath="$PROJECT_DIR$/lib/main.dart" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" afterPath="$PROJECT_DIR$/pubspec.yaml" />
+      <change beforePath="$PROJECT_DIR$/lib/personalInfo.dart" afterPath="$PROJECT_DIR$/lib/personalInfo.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -34,11 +26,31 @@
       <file leaf-file-name="personalInfo.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/personalInfo.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="81" column="26" lean-forward="true" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
+            <state relative-caret-position="417">
+              <caret line="44" column="44" lean-forward="true" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="container.dart" pinned="false" current-in-tab="false">
+        <entry file="file://D:/flutter/packages/flutter/lib/src/widgets/container.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="349" column="19" lean-forward="false" selection-start-line="349" selection-start-column="19" selection-end-line="349" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="alignment.dart" pinned="false" current-in-tab="false">
+        <entry file="file://D:/flutter/packages/flutter/lib/src/painting/alignment.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1375">
+              <caret line="19" column="15" lean-forward="false" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,28 +101,8 @@
       <file leaf-file-name="basic.dart" pinned="false" current-in-tab="false">
         <entry file="file://D:/flutter/packages/flutter/lib/src/widgets/basic.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51300">
-              <caret line="2760" column="2" lean-forward="false" selection-start-line="2760" selection-start-column="2" selection-end-line="2760" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="flex.dart" pinned="false" current-in-tab="false">
-        <entry file="file://D:/flutter/packages/flutter/lib/src/rendering/flex.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2318">
-              <caret line="130" column="13" lean-forward="false" selection-start-line="130" selection-start-column="2" selection-end-line="130" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="circle_avatar.dart" pinned="false" current-in-tab="false">
-        <entry file="file://D:/flutter/packages/flutter/lib/src/material/circle_avatar.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="57" column="19" lean-forward="false" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
+            <state relative-caret-position="259">
+              <caret line="1456" column="37" lean-forward="false" selection-start-line="1456" selection-start-column="21" selection-end-line="1456" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -167,6 +159,7 @@
       <find>dependencies</find>
       <find>Navigator</find>
       <find>uri</find>
+      <find>alignment</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -424,14 +417,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/flutter/packages/flutter/lib/src/widgets/basic.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83201">
-          <caret line="4379" column="12" lean-forward="true" selection-start-line="4379" selection-start-column="12" selection-end-line="4379" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/flutter/packages/flutter/lib/src/painting/text_span.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1007">
@@ -552,13 +537,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/flutter/packages/flutter/lib/src/widgets/container.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="301" column="19" lean-forward="false" selection-start-line="301" selection-start-column="19" selection-end-line="301" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/flutter/packages/flutter/lib/src/painting/box_shadow.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -598,6 +576,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12673">
           <caret line="681" column="13" lean-forward="false" selection-start-line="681" selection-start-column="13" selection-end-line="681" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -720,14 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/flutter/packages/flutter/lib/src/widgets/basic.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51300">
-          <caret line="2760" column="2" lean-forward="false" selection-start-line="2760" selection-start-column="2" selection-end-line="2760" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/flutter/packages/flutter/lib/src/material/icons.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -786,10 +757,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/flutter/packages/flutter/lib/src/painting/alignment.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1375">
+          <caret line="19" column="15" lean-forward="false" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/flutter/packages/flutter/lib/src/widgets/container.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="349" column="19" lean-forward="false" selection-start-line="349" selection-start-column="19" selection-end-line="349" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/flutter/packages/flutter/lib/src/widgets/basic.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="1456" column="37" lean-forward="false" selection-start-line="1456" selection-start-column="21" selection-end-line="1456" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/personalInfo.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="81" column="26" lean-forward="true" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
+        <state relative-caret-position="417">
+          <caret line="44" column="44" lean-forward="true" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

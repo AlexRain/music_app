@@ -28,9 +28,10 @@ class PersonalInfoState extends State<PersonalInfo> {
       appBar: new AppBar(title: Text('完善个人信息')),
       body: new Container(
         color: Colors.white,
-        child: Column(
+        child: ListView(
           children: <Widget>[
             new Container(
+              alignment: Alignment.center,
               child: new Stack(
                 children: <Widget>[
                   new CircleAvatar(
@@ -44,8 +45,9 @@ class PersonalInfoState extends State<PersonalInfo> {
                       child: new IconButton(
                           icon: new Icon(Icons.camera_alt),
                           onPressed: () async {
-                            File imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
-                            if(imageFile.path.isNotEmpty)
+                            File imageFile = await ImagePicker.pickImage(
+                                source: ImageSource.camera);
+                            if (imageFile.path.isNotEmpty)
                               _updateUserHead(imageFile.path);
                           }),
                       backgroundColor: Colors.black,
