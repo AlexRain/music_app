@@ -4,6 +4,10 @@ import 'package:flutter/services.dart';
 enum BtnStyle { btnLogin, btnRegister }
 
 class LoginUi extends StatefulWidget {
+  LoginUi({Key key,this.title}):super(key:key);
+
+  final String title;
+
   @override
   _LoginUi createState() => new _LoginUi();
 }
@@ -11,6 +15,23 @@ class LoginUi extends StatefulWidget {
 class _LoginUi extends State<LoginUi> {
   final TextEditingController _phoneNumController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
+
+  Future<Null> _openMainPage() async {
+    bool value = await Navigator.of(context).push(new MaterialPageRoute<bool>(
+        builder: (BuildContext context) {
+          return new Center(
+            child: new GestureDetector(
+              child: new Text("确定"),
+              onTap: () { Navigator.of(context).pop(true); },
+            ),
+          );
+        }
+    ));
+
+    setState(() {
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var phoneNum = new Container(
@@ -46,6 +67,7 @@ class _LoginUi extends State<LoginUi> {
         Scaffold.of(context).showSnackBar(snackBar);
         return;
       }
+      //TODO
     }
 
     void _login() {
@@ -55,6 +77,7 @@ class _LoginUi extends State<LoginUi> {
         Scaffold.of(context).showSnackBar(snackBar);
         return;
       }
+      //TODO
     }
 
     const btnColor = Color.fromARGB(255, 255, 194, 0);
@@ -65,14 +88,45 @@ class _LoginUi extends State<LoginUi> {
 
     Widget _createRaisedBtn(BtnStyle style) {
       return style == BtnStyle.btnLogin
-          ? new RaisedButton(
-              onPressed: _login,
-              child: Text('登录', style: loginBtnTextStyle),
-              color: btnColor)
-          : new RaisedButton(
-              onPressed: _regist,
-              child: Text('注册', style: registBtnTextStyle),
-              color: Colors.white);
+          ? new Builder(builder: (BuildContext context) {
+              return new RaisedButton(
+                  onPressed: (){
+                    print('_login function called');
+                    if (_phoneNumController.text.isEmpty) {
+                      final snackBar =
+                      new SnackBar(content: new Text('号码不能为空！'));
+                      Scaffold.of(context).showSnackBar(snackBar);
+                      return;
+                    }
+
+                    if (_passwordController.text.isEmpty) {
+                      final snackBar = new SnackBar(content: new Text('密码不能为空！'));
+                      Scaffold.of(context).showSnackBar(snackBar);
+                      return;
+                    }
+
+                    //TODO
+                    Navigator.of(context).pushNamed('/mainPage');
+                  },
+                  child: Text('登录', style: loginBtnTextStyle),
+                  color: btnColor);
+            })
+          : new Builder(builder: (BuildContext context) {
+              return new RaisedButton(
+                  onPressed: () {
+                    print('_regist function called');
+                    if (_phoneNumController.text.isEmpty) {
+                      final snackBar =
+                          new SnackBar(content: new Text('号码不能为空！'));
+                      Scaffold.of(context).showSnackBar(snackBar);
+                      return;
+                    }
+                    //TODO
+                    Navigator.of(context).pushNamed('/mainPage');
+                  },
+                  child: Text('注册', style: registBtnTextStyle),
+                  color: Colors.white);
+            });
     }
 
     Container _createBtn(BtnStyle style) {
@@ -94,36 +148,35 @@ class _LoginUi extends State<LoginUi> {
               style: new TextStyle(color: Colors.white),
             )),
         body: new Container(
-          color:Colors.white,
-          child: new Builder(builder:(BuildContext context){
-            return new ListView(children: <Widget>[
-              new Container(
-                color: Colors.white,
-                child: new Column(children: <Widget>[
-                  new Container(
-                    margin: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 10.0),
-                    child: new Image.asset(
-                      'images/logo.png',
-                      width: 170.0,
-                      height: 46.0,
+            color: Colors.white,
+            child: new Builder(builder: (BuildContext context) {
+              return new ListView(children: <Widget>[
+                new Container(
+                  color: Colors.white,
+                  child: new Column(children: <Widget>[
+                    new Container(
+                      margin: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 10.0),
+                      child: new Image.asset(
+                        'images/logo.png',
+                        width: 170.0,
+                        height: 46.0,
+                      ),
                     ),
-                  ),
-                  new Card(
-                      margin: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
-                      child: new Container(
-                          padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
-                          child: new Column(
-                              children: <Widget>[phoneNum, pwdInput]))),
-                  new Column(
-                    children: <Widget>[
-                      _createBtn(BtnStyle.btnLogin),
-                      _createBtn(BtnStyle.btnRegister),
-                    ],
-                  )
-                ]),
-              ),
-            ]);
-            })
-        ));
+                    new Card(
+                        margin: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
+                        child: new Container(
+                            padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 5.0),
+                            child: new Column(
+                                children: <Widget>[phoneNum, pwdInput]))),
+                    new Column(
+                      children: <Widget>[
+                        _createBtn(BtnStyle.btnLogin),
+                        _createBtn(BtnStyle.btnRegister),
+                      ],
+                    )
+                  ]),
+                ),
+              ]);
+            })));
   }
 }
