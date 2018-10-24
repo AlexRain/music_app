@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/explorPage.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
-
+import 'package:music_app/videoPage.dart';
 
 enum PopupMenu { setting, softwareInfo, aboutUs }
+enum WidgetIndex { explore, video, mine, friends, account }
 
 class MainPage extends StatefulWidget {
   MainPage({Key key, this.title}) : super(key: key);
@@ -16,29 +17,17 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage>
     with SingleTickerProviderStateMixin {
-
   List<BottomNavigationBarItem> _bottomTabs = <BottomNavigationBarItem>[
-    new BottomNavigationBarItem(title: new Text('发现'),icon: Icon(Icons.search)),
-    new BottomNavigationBarItem(title: new Text('视频'),icon: Icon(Icons.videocam)),
-    new BottomNavigationBarItem(title: new Text('我的'),icon: Icon(Icons.music_note)),
-    new BottomNavigationBarItem(title: new Text('朋友'),icon: Icon(Icons.people)),
-    new BottomNavigationBarItem(title: new Text('账号'),icon: Icon(Icons.person)),
-  ];
-
-  var _mainPages = <Widget>[
-    new ExplorUi(),
-    new Container(
-      color: Colors.greenAccent,
-    ),
-    new Container(
-      color: Colors.blueAccent,
-    ),
-    new Container(
-      color: Colors.grey,
-    ),
-    new Container(
-      color: Colors.black,
-    ),
+    new BottomNavigationBarItem(
+        title: new Text('发现'), icon: Icon(Icons.search)),
+    new BottomNavigationBarItem(
+        title: new Text('视频'), icon: Icon(Icons.videocam)),
+    new BottomNavigationBarItem(
+        title: new Text('我的'), icon: Icon(Icons.music_note)),
+    new BottomNavigationBarItem(
+        title: new Text('朋友'), icon: Icon(Icons.people)),
+    new BottomNavigationBarItem(
+        title: new Text('账号'), icon: Icon(Icons.person)),
   ];
 
   //当前索引
@@ -47,40 +36,75 @@ class MainPageState extends State<MainPage>
   SearchBar searchBar;
   var popupMenu;
 
+  final List<Tab> _tabsItem = <Tab>[
+    new Tab(text: '个性推荐'),
+    new Tab(text: '主播电台'),
+  ];
+
+  ///上tab页控制器
+  TabController _tabCtrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabCtrl = new TabController(length: _tabsItem.length, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _tabCtrl.dispose();
+  }
 
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
-      leading: new IconButton(icon: Icon(Icons.keyboard_voice), onPressed: (){}),
-        title: new Text('网易云音乐'),
-        actions: [searchBar.getSearchAction(context),popupMenu]
+      leading:
+          new IconButton(icon: Icon(Icons.keyboard_voice), onPressed: () {}),
+      title: new Text('网易云音乐'),
+      actions: [
+        searchBar.getSearchAction(context),
+        new IconButton(icon: new Icon(Icons.music_note), onPressed: (){}),
+      ],
+      bottom: buildTabBar(),
     );
   }
 
-  MainPageState(){
+  TabBar buildTabBar() {
+    return new TabBar(
+      controller: _tabCtrl,
+      isScrollable: true,
+      tabs: _tabsItem.map((Tab tab) {
+        return new Tab(text: tab.text);
+      }).toList(),
+    );
+  }
+
+  MainPageState() {
     searchBar = new SearchBar(
-        inBar: true,
-        setState: setState,
-        onSubmitted: print,
-        buildDefaultAppBar: buildAppBar,
+      inBar: true,
+      setState: setState,
+      onSubmitted: print,
+      buildDefaultAppBar: buildAppBar,
     );
 
     popupMenu = PopupMenuButton<PopupMenu>(
-        onSelected: (PopupMenu result) { setState(() {  }); },
+        onSelected: (PopupMenu result) {
+          setState(() {});
+        },
         itemBuilder: (BuildContext context) => <PopupMenuEntry<PopupMenu>>[
-          const PopupMenuItem<PopupMenu>(
-            value: PopupMenu.setting,
-            child: Text('设置'),
-          ),
-          const PopupMenuItem<PopupMenu>(
-            value: PopupMenu.softwareInfo,
-            child: Text('软件信息'),
-          ),
-          const PopupMenuItem<PopupMenu>(
-            value: PopupMenu.aboutUs,
-            child: Text('关于'),
-          ),
-        ]
-    );
+              const PopupMenuItem<PopupMenu>(
+                value: PopupMenu.setting,
+                child: Text('设置'),
+              ),
+              const PopupMenuItem<PopupMenu>(
+                value: PopupMenu.softwareInfo,
+                child: Text('软件信息'),
+              ),
+              const PopupMenuItem<PopupMenu>(
+                value: PopupMenu.aboutUs,
+                child: Text('关于'),
+              ),
+            ]);
   }
 
   @override
@@ -109,21 +133,25 @@ class MainPageState extends State<MainPage>
       },
     );
 
-
     return Scaffold(
-//        appBar: AppBar(actions: <Widget>[
-//          new IconButton(color:Colors.white,icon: new Icon(Icons.search), onPressed: (){
-//
-//          }),
-//          new IconButton(color:Colors.white,icon: new Icon(Icons.keyboard_voice), onPressed: (){
-//
-//          }),
-//          popupMenu,
-//        ],
-//            backgroundColor:Colors.red),
-    appBar: searchBar.build(context),
-        body:_mainPages[_tabIndex],
-        bottomNavigationBar: _bottomNavigationBar,
+//      appBar: searchBar.build(context),
+      body: IndexedStack(
+        children: <Widget>[
+          new ExplorUi(),
+          new VideoUi(),
+          new Container(
+            color: Colors.blueAccent,
+          ),
+          new Container(
+            color: Colors.grey,
+          ),
+          new Container(
+            color: Colors.black,
+          ),
+        ],
+        index: _tabIndex,
+      ),
+      bottomNavigationBar: _bottomNavigationBar,
 //        drawer: Drawer(
 //            child: Container(
 //          child: new ListView(

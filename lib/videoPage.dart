@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 
-enum PopupMenu { setting, softwareInfo, aboutUs }
-
-class ExplorUi extends StatefulWidget {
-  ExplorUi({Key key}) : super(key: key);
+class VideoUi extends StatefulWidget{
 
   @override
-  ExplorUiState createState() => new ExplorUiState();
+  VideoUiState createState() => new VideoUiState();
 }
 
-class ExplorUiState extends State<ExplorUi>
-    with SingleTickerProviderStateMixin {
+class VideoUiState extends State<VideoUi>
+  with SingleTickerProviderStateMixin{
 
   var  _tabsItem = <Tab>[
-    new Tab(
-        text: '个性推荐'),
-    new Tab(text: '主播电台'),
+    new Tab(text: '推荐'),
+    new Tab(text: 'LOOK直播'),
+    new Tab(text: '现场'),
+    new Tab(text: '农夫渔夫'),
+    new Tab(text: '听BGM'),
+    new Tab(text: 'MV'),
+    new Tab(text: 'ACG音乐'),
+    new Tab(text: '演奏'),
+    new Tab(text: '广场'),
   ];
 
   ///上tab页控制器
@@ -29,7 +32,7 @@ class ExplorUiState extends State<ExplorUi>
   AppBar buildAppBar(BuildContext context) {
     return new AppBar(
       leading:
-      new IconButton(icon: Icon(Icons.keyboard_voice), onPressed: () {
+      new IconButton(icon: Icon(Icons.videocam), onPressed: () {
         //TODO
       }),
       title: new Text('网易云音乐'),
@@ -53,32 +56,13 @@ class ExplorUiState extends State<ExplorUi>
     );
   }
 
-  ExplorUiState() {
+  VideoUiState() {
     searchBar = new SearchBar(
       inBar: true,
       setState: setState,
       onSubmitted: print,
       buildDefaultAppBar: buildAppBar,
     );
-
-    popupMenu = PopupMenuButton<PopupMenu>(
-        onSelected: (PopupMenu result) {
-          setState(() {});
-        },
-        itemBuilder: (BuildContext context) => <PopupMenuEntry<PopupMenu>>[
-          const PopupMenuItem<PopupMenu>(
-            value: PopupMenu.setting,
-            child: Text('设置'),
-          ),
-          const PopupMenuItem<PopupMenu>(
-            value: PopupMenu.softwareInfo,
-            child: Text('软件信息'),
-          ),
-          const PopupMenuItem<PopupMenu>(
-            value: PopupMenu.aboutUs,
-            child: Text('关于'),
-          ),
-        ]);
   }
 
   @override
@@ -100,8 +84,15 @@ class ExplorUiState extends State<ExplorUi>
       body: new TabBarView(
         controller: _tabCtrl,
         children: <Widget>[
-          new Container(color: Colors.redAccent,),
-          new Container(color: Colors.yellowAccent,)
+          new Container(color: Colors.greenAccent,),
+          new Container(color: Colors.yellowAccent,),
+          new Container(color: Colors.lightBlueAccent,),
+          new Container(color: Colors.deepOrangeAccent,),
+          new Container(color: Colors.pinkAccent,),
+          new Container(color: Colors.yellowAccent,),
+          new Container(color: Colors.yellowAccent,),
+          new Container(color: Colors.yellowAccent,),
+          new Container(color: Colors.yellowAccent,),
         ],
       ),
     );
