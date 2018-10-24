@@ -33,7 +33,7 @@ class ExplorUiState extends State<ExplorUi>
   @override
   Widget build(BuildContext context) {
     Container _MainPageTop = new Container(
-      color: Colors.white,
+      color: Colors.red,
       child: new Row(
         children: <Widget>[
           new Icon(Icons.keyboard_voice),

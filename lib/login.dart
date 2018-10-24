@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:music_app/mainPage.dart';
 
 enum BtnStyle { btnLogin, btnRegister }
 
 class LoginUi extends StatefulWidget {
-  LoginUi({Key key,this.title}):super(key:key);
+  LoginUi({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -16,20 +17,12 @@ class _LoginUi extends State<LoginUi> {
   final TextEditingController _phoneNumController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
 
-  Future<Null> _openMainPage() async {
-    bool value = await Navigator.of(context).push(new MaterialPageRoute<bool>(
-        builder: (BuildContext context) {
-          return new Center(
-            child: new GestureDetector(
-              child: new Text("确定"),
-              onTap: () { Navigator.of(context).pop(true); },
-            ),
-          );
-        }
-    ));
-
-    setState(() {
-    });
+  void _openMainPage() {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (BuildContext context) => new MainPage()),
+      ModalRoute.withName('/loginPage'),
+    );
   }
 
   @override
@@ -60,24 +53,31 @@ class _LoginUi extends State<LoginUi> {
             ),
             obscureText: true));
 
-    void _regist() {
+    bool _regist() {
+      bool ok = false;
       print('_regist function called');
       if (_phoneNumController.text.isEmpty) {
         final snackBar = new SnackBar(content: new Text('号码不能为空！'));
         Scaffold.of(context).showSnackBar(snackBar);
-        return;
+        ok = false;
+      } else {
+        ok = true;
       }
-      //TODO
+
+      return ok;
     }
 
-    void _login() {
+    bool _login() {
+      bool ok = false;
       print('_login function called');
       if (_passwordController.text.isEmpty) {
         final snackBar = new SnackBar(content: new Text('密码不能为空！'));
         Scaffold.of(context).showSnackBar(snackBar);
-        return;
+        ok = false;
+      } else {
+        ok = true;
       }
-      //TODO
+      return ok;
     }
 
     const btnColor = Color.fromARGB(255, 255, 194, 0);
@@ -90,29 +90,33 @@ class _LoginUi extends State<LoginUi> {
       return style == BtnStyle.btnLogin
           ? new Builder(builder: (BuildContext context) {
               return new RaisedButton(
-                  onPressed: (){
+                  child: Text('登录', style: loginBtnTextStyle),
+                  color: btnColor,
+                  onPressed: () {
                     print('_login function called');
                     if (_phoneNumController.text.isEmpty) {
                       final snackBar =
-                      new SnackBar(content: new Text('号码不能为空！'));
+                          new SnackBar(content: new Text('号码不能为空！'));
                       Scaffold.of(context).showSnackBar(snackBar);
                       return;
                     }
 
                     if (_passwordController.text.isEmpty) {
-                      final snackBar = new SnackBar(content: new Text('密码不能为空！'));
+                      final snackBar =
+                          new SnackBar(content: new Text('密码不能为空！'));
                       Scaffold.of(context).showSnackBar(snackBar);
                       return;
                     }
 
                     //TODO
-                    Navigator.of(context).pushNamed('/mainPage');
-                  },
-                  child: Text('登录', style: loginBtnTextStyle),
-                  color: btnColor);
+                    _openMainPage();
+                  });
+
             })
           : new Builder(builder: (BuildContext context) {
               return new RaisedButton(
+                  child: Text('注册', style: registBtnTextStyle),
+                  color: Colors.white,
                   onPressed: () {
                     print('_regist function called');
                     if (_phoneNumController.text.isEmpty) {
@@ -122,10 +126,8 @@ class _LoginUi extends State<LoginUi> {
                       return;
                     }
                     //TODO
-                    Navigator.of(context).pushNamed('/mainPage');
-                  },
-                  child: Text('注册', style: registBtnTextStyle),
-                  color: Colors.white);
+                    _openMainPage();
+                  });
             });
     }
 
