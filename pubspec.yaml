@@ -21,6 +21,11 @@ dependencies:
   cupertino_icons: ^0.1.2
   image_picker: ^0.4.10
   flutter_search_bar: ^2.0.7
+  flutter_sound: ^1.1.4
+  camera: ^0.2.4
+  path_provider: ^0.4.1
+  video_player: ^0.7.2
+  firebase_admob: ^0.6.1+1
 
 dev_dependencies:
   flutter_test:

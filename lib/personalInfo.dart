@@ -13,11 +13,13 @@ class PersonalInfo extends StatefulWidget {
 
 class PersonalInfoState extends State<PersonalInfo> {
   final TextEditingController _nickNameCtrl = new TextEditingController();
-  String _userHeadPath = 'images/head.png';
+  File _image;
 
-  void _updateUserHead(String path) {
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+
     setState(() {
-      _userHeadPath = path;
+      _image = image;
     });
   }
 
@@ -34,7 +36,9 @@ class PersonalInfoState extends State<PersonalInfo> {
               child: new Stack(
                 children: <Widget>[
                   new CircleAvatar(
-                    child: new Image.asset(_userHeadPath),
+                    child: (_image == null)
+                        ? new Image.asset('images/head.png')
+                        : new Image.file(_image),
                     backgroundColor: Colors.lightBlueAccent,
                     radius: 50.0,
                   ),
@@ -43,11 +47,31 @@ class PersonalInfoState extends State<PersonalInfo> {
                     child: new CircleAvatar(
                       child: new IconButton(
                           icon: new Icon(Icons.camera_alt),
-                          onPressed: () async {
-                            File imageFile = await ImagePicker.pickImage(
-                                source: ImageSource.camera);
-                            if (imageFile.path.isNotEmpty)
-                              _updateUserHead(imageFile.path);
+                          onPressed: () {
+                            showModalBottomSheet<Null>(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return new Container(
+                                    height: 144.0,
+                                      child: new Padding(
+                                          padding: const EdgeInsets.all(0.0),
+                                          child: new Column(
+                                            children: <Widget>[
+                                              new Container(
+                                          margin:const EdgeInsets.fromLTRB(0.0,20.0,0.0,20.0),
+                                                child: new GestureDetector(onTap: (){}, child: new Text('拍摄')),
+                                              ),
+                                              Divider(),
+                                              new Container(
+                                                margin:const EdgeInsets.fromLTRB(0.0,20.0,0.0,20.0),
+                                                child: new GestureDetector(onTap: (){}, child: new Text('从手机相册选择')),
+                                              ),
+                                              Divider(),
+                                            ],
+                                          )
+                                      )
+                                  );
+                                });
                           }),
                       backgroundColor: Colors.black,
                       radius: 50.0,

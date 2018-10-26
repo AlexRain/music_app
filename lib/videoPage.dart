@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
+import 'package:camera/camera.dart';
 
 class VideoUi extends StatefulWidget{
 
@@ -24,6 +25,8 @@ class VideoUiState extends State<VideoUi>
 
   ///上tab页控制器
   TabController _tabCtrl;
+
+  CameraController controller;
 
   //有检索框的appBar
   SearchBar searchBar;

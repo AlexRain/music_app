@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/explorPage.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
+import 'package:music_app/personalInfo.dart';
 import 'package:music_app/videoPage.dart';
 
 enum PopupMenu { setting, softwareInfo, aboutUs }
@@ -145,9 +146,7 @@ class MainPageState extends State<MainPage>
           new Container(
             color: Colors.grey,
           ),
-          new Container(
-            color: Colors.black,
-          ),
+          new PersonalInfo(),
         ],
         index: _tabIndex,
       ),
